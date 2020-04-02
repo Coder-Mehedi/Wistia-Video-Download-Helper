@@ -53,7 +53,7 @@ function App() {
 	};
 	return (
 		<div className="App center">
-			<h1>Wastia Video Download Helper</h1>
+			<h1>wistia Video Download Helper</h1>
 			<div className="row">
 				<form onSubmit={handleSubmit} className="col m6 offset-m3">
 					<input

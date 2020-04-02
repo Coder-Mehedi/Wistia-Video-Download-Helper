@@ -2,3 +2,6 @@ span {
 	min-width: 170px;
 	display: inline-block;
 }
+.filename h2 {
+	cursor: pointer;
+}
