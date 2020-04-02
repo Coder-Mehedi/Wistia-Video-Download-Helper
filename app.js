@@ -11,7 +11,7 @@ app.get("/download/:id", async (req, res) => {
 		const data = await scrapData(req.params.id);
 		return res.json(JSON.parse(data));
 	} catch (error) {
-		return res.json({ msg: "Invalid Video ID" });
+		return res.json({ error: "Invalid Video ID" });
 	}
 });
 
