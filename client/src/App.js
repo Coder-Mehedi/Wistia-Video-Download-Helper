@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
 import DownloadLinks from "./DownloadLinks";
+import copy from "copy-to-clipboard";
 
 function App() {
 	const [link, setLink] = useState("");
@@ -65,7 +66,7 @@ function App() {
 				</form>
 			</div>
 			<div className="filename center">
-				<h2>{realName}</h2>
+				<h2 onClick={() => copy(realName)}>{realName}</h2>
 			</div>
 			<DownloadLinks data={data} />
 		</div>
