@@ -7,11 +7,24 @@ function App() {
 	const [link, setLink] = useState("");
 	const [id, setId] = useState("");
 	const [data, setData] = useState([]);
+	const [realName, setRealName] = useState("");
 
 	useEffect(() => {
 		setId(grabId());
+		setRealName(genRealName());
 		// eslint-disable-next-line
 	}, [link]);
+
+	const genRealName = () => {
+		const regex = />\d{3}.+?.mp4/;
+		let matched = link.match(regex);
+		if (matched !== null && matched.length > 0) {
+			matched = matched[0];
+			matched = matched.split(">")[1];
+			console.log(matched);
+			return matched;
+		}
+	};
 
 	const getData = async id => {
 		const res = await axios.get("/download/" + id);
@@ -38,17 +51,22 @@ function App() {
 		return setData(await getData(id));
 	};
 	return (
-		<div className="App row">
+		<div className="App center">
 			<h1>Wastia Video Download Helper</h1>
-			<form onSubmit={handleSubmit} className="col m6 offset-m3">
-				<input
-					type="text"
-					onChange={handleChange}
-					value={link}
-					placeholder="Enter Video Id"
-				/>
-				<button className="btn red">Submit</button>
-			</form>
+			<div className="row">
+				<form onSubmit={handleSubmit} className="col m6 offset-m3">
+					<input
+						type="text"
+						onChange={handleChange}
+						value={link}
+						placeholder="Enter Video Id"
+					/>
+					<button className="btn red right">Submit</button>
+				</form>
+			</div>
+			<div className="filename center">
+				<h2>{realName}</h2>
+			</div>
 			<DownloadLinks data={data} />
 		</div>
 	);
