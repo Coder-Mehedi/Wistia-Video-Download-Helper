@@ -9,7 +9,6 @@ app.use(cors());
 app.get("/download/:id", async (req, res) => {
 	try {
 		const data = await scrapData(req.params.id);
-		console.log(data);
 		return res.json(JSON.parse(data));
 	} catch (error) {
 		return res.json({ msg: "Invalid Video ID" });
