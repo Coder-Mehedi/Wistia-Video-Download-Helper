@@ -2,7 +2,7 @@ span {
 	min-width: 170px;
 	display: inline-block;
 }
-.filename h2 {
+.filename h3 {
 	cursor: pointer;
 }
 .form {
@@ -10,7 +10,9 @@ span {
 }
 
 .App h1 {
-	padding: 30px;
+	padding: 15px;
 	position: relative;
 	top: -45px;
+	font-size: 3.7rem;
+	margin-bottom: 0;
 }

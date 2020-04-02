@@ -4,6 +4,7 @@ const DownloadLinks = ({ data }) => {
 	return (
 		<div className="row">
 			<div className="col m6 offset-m3">
+				<h3>Availble Download Links</h3>
 				<ul className="collection">
 					{Array.isArray(data) &&
 						data.length > 0 &&

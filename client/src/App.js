@@ -17,19 +17,17 @@ function App() {
 	}, [link]);
 
 	const genRealName = () => {
-		const regex = />\d{3}.+?.mp4/;
+		const regex = />\d+.+?.mp4/;
 		let matched = link.match(regex);
 		if (matched !== null && matched.length > 0) {
 			matched = matched[0];
 			matched = matched.split(">")[1];
-			console.log(matched);
 			return matched;
 		}
 	};
 
 	const getData = async id => {
 		const res = await axios.get("/download/" + id);
-		console.log(res.data);
 		return res.data;
 	};
 
@@ -68,9 +66,16 @@ function App() {
 				</form>
 			</div>
 			<div className="filename center">
-				<h2 onClick={() => copy(realName)}>{realName}</h2>
+				<h3
+					onClick={() => copy(realName)}
+					className="tooltipped"
+					data-position="top"
+					data-tooltip="Click to copy"
+				>
+					{realName}
+				</h3>
 			</div>
-			<DownloadLinks data={data} />
+			{data.length > 0 && <DownloadLinks data={data} />}
 		</div>
 	);
 }
