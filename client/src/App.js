@@ -9,6 +9,7 @@ function App() {
 	const [id, setId] = useState("");
 	const [data, setData] = useState([]);
 	const [realName, setRealName] = useState("");
+	const [tooltiptText, setTooltipText] = useState("Click to copy");
 
 	useEffect(() => {
 		setId(grabId());
@@ -67,12 +68,14 @@ function App() {
 			</div>
 			<div className="filename center">
 				<h3
-					onClick={() => copy(realName)}
-					className="tooltipped"
-					data-position="top"
-					data-tooltip="Click to copy"
+					className="tooltip"
+					onClick={() => {
+						copy(realName);
+						setTooltipText("Copied");
+					}}
 				>
 					{realName}
+					<span className="tooltiptext">{tooltiptText}</span>
 				</h3>
 			</div>
 			{data.length > 0 && <DownloadLinks data={data} />}

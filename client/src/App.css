@@ -5,6 +5,9 @@ span {
 .filename h3 {
 	cursor: pointer;
 }
+.filename h3:hover {
+	color: #f44336;
+}
 .form {
 	display: flex;
 }
@@ -15,4 +18,30 @@ span {
 	top: -45px;
 	font-size: 3.7rem;
 	margin-bottom: 0;
+}
+
+.tooltip {
+	position: relative;
+	display: inline-block;
+	border-bottom: 1px dotted black;
+}
+
+.tooltip:hover .tooltiptext {
+	visibility: visible;
+}
+
+.tooltip .tooltiptext {
+	visibility: hidden;
+	width: 270px;
+	background-color: black;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 7px 0px;
+	position: absolute;
+	z-index: 1;
+	font-size: 30px;
+	position: absolute;
+	left: 105%;
+	bottom: 25px;
 }
