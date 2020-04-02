@@ -4,7 +4,8 @@ const DownloadLinks = ({ data }) => {
 	return (
 		<div className="col m6 offset-m3">
 			<ul className="collection">
-				{data.length > 0 &&
+				{Array.isArray(data) &&
+					data.length > 0 &&
 					data.map(dt => (
 						<li className="collection-item">
 							<a

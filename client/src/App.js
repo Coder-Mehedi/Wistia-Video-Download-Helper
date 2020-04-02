@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
 import DownloadLinks from "./DownloadLinks";
 
 function App() {
+	const [link, setLink] = useState("");
 	const [id, setId] = useState("");
 	const [data, setData] = useState([]);
-	const [link, setLink] = useState("");
+
+	useEffect(() => {
+		setId(grabId());
+	}, [link]);
 
 	const getData = async id => {
 		const res = await axios.get(`/download/${id}`);
@@ -19,16 +23,17 @@ function App() {
 		if (matched !== null && matched.length > 0) {
 			matched = matched[0];
 			matched = matched.split("=")[1];
-			console.log(matched);
 			return matched;
 		}
 	};
 
+	const handleChange = async e => {
+		setLink(e.target.value);
+	};
+
 	const handleSubmit = async e => {
 		e.preventDefault();
-		setId(grabId());
-		const fetchedData = await getData(id);
-		setData(fetchedData);
+		return setData(await getData(id));
 	};
 	return (
 		<div className="App row">
@@ -36,7 +41,7 @@ function App() {
 			<form onSubmit={handleSubmit} className="col m6 offset-m3">
 				<input
 					type="text"
-					onChange={e => setLink(e.target.value)}
+					onChange={handleChange}
 					value={link}
 					placeholder="Enter Video Id"
 				/>
