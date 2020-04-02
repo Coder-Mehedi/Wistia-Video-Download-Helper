@@ -1,5 +1,3 @@
-const request = require("request");
-const cheerio = require("cheerio");
 const fs = require("fs");
 const got = require("got");
 
@@ -11,21 +9,21 @@ const scrapData = async id => {
 	try {
 		const response = await got(`http://fast.wistia.net/embed/iframe/${id}`);
 
-		const $ = response.body;
+		const html = response.body;
 
-		const regex = new RegExp(/http:\/\/embed.wistia.com\/deliveries\/.+.bin*/);
-		let matched = $.match(regex);
+		// const regex = new RegExp(/http:\/\/embed.wistia.com\/deliveries\/.+.bin*/);
+		const regex = new RegExp(/\[{"type.+?}]/);
+		let matched = html.match(regex);
 		if (matched !== null && matched.length > 0) {
 			matched = matched[0];
-			matched = `[{ "url": "${matched}" }]`;
+			// matched = `[{ "url": "${matched}" }]`;
+			matched = `${matched}`;
 			// writeStream.write(matched);
 			return matched;
 		}
 	} catch (error) {
 		console.log(error);
 	}
-
-	// data = matched;
-	// return data;
 };
+// scrapData(id);
 module.exports = scrapData;
