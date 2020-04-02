@@ -7,7 +7,7 @@ const DownloadLinks = ({ data }) => {
 				{Array.isArray(data) &&
 					data.length > 0 &&
 					data.map(dt => (
-						<li className="collection-item">
+						<li className="collection-item" key={dt.display_name}>
 							<a
 								href={dt.url}
 								download

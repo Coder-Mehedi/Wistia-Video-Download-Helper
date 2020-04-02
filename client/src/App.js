@@ -10,10 +10,12 @@ function App() {
 
 	useEffect(() => {
 		setId(grabId());
+		// eslint-disable-next-line
 	}, [link]);
 
 	const getData = async id => {
-		const res = await axios.get(`/download/${id}`);
+		const res = await axios.get("/download/" + id);
+		console.log(res.data);
 		return res.data;
 	};
 
