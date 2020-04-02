@@ -1,9 +1,9 @@
 const got = require("got");
 
-const id = "e2vgflin81";
+// const id = "e2vgflin81";
 
 // regex for grabbing video
-const rex = /wvideo=.{10}/;
+// const rex = /wvideo=.{10}/;
 
 const scrapData = async id => {
 	try {

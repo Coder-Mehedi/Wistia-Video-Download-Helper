@@ -9,7 +9,7 @@ function App() {
 	const [link, setLink] = useState("");
 
 	const getData = async id => {
-		const res = await axios.get(`http://localhost:4000/download/${id}`);
+		const res = await axios.get(`/download/${id}`);
 		return res.data;
 	};
 
@@ -26,7 +26,7 @@ function App() {
 
 	const handleSubmit = async e => {
 		e.preventDefault();
-		const id = grabId();
+		setId(grabId());
 		const fetchedData = await getData(id);
 		setData(fetchedData);
 	};

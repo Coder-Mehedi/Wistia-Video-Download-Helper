@@ -7,7 +7,15 @@ const DownloadLinks = ({ data }) => {
 				{data.length > 0 &&
 					data.map(dt => (
 						<li className="collection-item">
-							<a href={dt.url}>{dt.display_name}</a>
+							<a
+								href={dt.url}
+								download
+								target="_blank"
+								rel="noopener noreferrer"
+								type="media_type"
+							>
+								{dt.display_name}
+							</a>
 						</li>
 					))}
 			</ul>
