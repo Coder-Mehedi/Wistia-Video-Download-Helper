@@ -5,3 +5,12 @@ span {
 .filename h2 {
 	cursor: pointer;
 }
+.form {
+	display: flex;
+}
+
+.App h1 {
+	padding: 30px;
+	position: relative;
+	top: -45px;
+}

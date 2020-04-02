@@ -53,14 +53,16 @@ function App() {
 	};
 	return (
 		<div className="App center">
-			<h1>wistia Video Download Helper</h1>
+			<h1 className="grey lighten-2 indigo-text">
+				Wistia Video Download Helper
+			</h1>
 			<div className="row">
-				<form onSubmit={handleSubmit} className="col m6 offset-m3">
+				<form onSubmit={handleSubmit} className="col m6 offset-m3 form">
 					<input
 						type="text"
 						onChange={handleChange}
 						value={link}
-						placeholder="Enter Video Id"
+						placeholder="Enter your copied link and thumbnail clipboard"
 					/>
 					<button className="btn red right">Submit</button>
 				</form>
