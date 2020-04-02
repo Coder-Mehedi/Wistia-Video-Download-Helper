@@ -23,4 +23,5 @@ app.get("/download/:id", async (req, res) => {
 	}
 });
 
-app.listen(4000, () => console.log(`Server Started On Port 4000`));
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server Started On Port ${PORT}`));
