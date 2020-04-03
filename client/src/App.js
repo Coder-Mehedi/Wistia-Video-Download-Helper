@@ -11,11 +11,17 @@ function App() {
 	const [realName, setRealName] = useState("");
 	const [tooltiptText, setTooltipText] = useState("Click to copy");
 
+	const [autoSubmit, setAutoSubmit] = useState(true);
+
 	useEffect(() => {
 		setId(grabId());
 		setRealName(genRealName());
 		// eslint-disable-next-line
-	}, [link]);
+	}, [link, id]);
+
+	useEffect(() => {
+		autoSubFunc();
+	}, [realName]);
 
 	const genRealName = () => {
 		const regex = />\d+.+?.mp4/;
@@ -46,6 +52,11 @@ function App() {
 		setLink(e.target.value);
 	};
 
+	const autoSubFunc = async () => {
+		if (!autoSubmit) return;
+		return setData(await getData(id));
+	};
+
 	const handleSubmit = async e => {
 		e.preventDefault();
 		return setData(await getData(id));
@@ -56,7 +67,25 @@ function App() {
 				Wistia Video Download Helper
 			</h1>
 			<div className="row">
-				<form onSubmit={handleSubmit} className="col m6 offset-m3 form">
+				<form onSubmit={handleSubmit} className="col m8 offset-m2 form">
+					<div className="checkboxes">
+						<p>
+							<label>
+								<input
+									type="checkbox"
+									checked={autoSubmit ? "checked" : ""}
+									onChange={() => setAutoSubmit(!autoSubmit)}
+								/>
+								<span>Auto Submit</span>
+							</label>
+						</p>
+						{/* <p>
+							<label>
+								<input type="checkbox" />
+								<span>Auto Clear</span>
+							</label>
+						</p> */}
+					</div>
 					<input
 						type="text"
 						onChange={handleChange}
@@ -78,7 +107,7 @@ function App() {
 					<span className="tooltiptext">{tooltiptText}</span>
 				</h3>
 			</div>
-			{data.length > 0 && <DownloadLinks data={data} />}
+			{data.length > 0 && <DownloadLinks data={data} realName={realName} />}
 		</div>
 	);
 }

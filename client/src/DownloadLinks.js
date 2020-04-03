@@ -1,6 +1,6 @@
 import React from "react";
 
-const DownloadLinks = ({ data }) => {
+const DownloadLinks = ({ data, realName }) => {
 	return (
 		<div className="row">
 			<div className="col m6 offset-m3">
@@ -12,7 +12,7 @@ const DownloadLinks = ({ data }) => {
 							<li className="collection-item" key={dt.display_name}>
 								<a
 									href={dt.url}
-									download
+									download={realName}
 									target="_blank"
 									rel="noopener noreferrer"
 									type="media_type"

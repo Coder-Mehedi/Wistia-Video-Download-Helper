@@ -45,3 +45,7 @@ span {
 	left: 105%;
 	bottom: 25px;
 }
+
+[type="checkbox"] + span:not(.lever) {
+	padding-left: 0;
+}
