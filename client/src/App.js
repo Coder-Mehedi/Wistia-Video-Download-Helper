@@ -107,7 +107,7 @@ function App() {
 					<span className="tooltiptext">{tooltiptText}</span>
 				</h3>
 			</div>
-			{data.length > 0 && <DownloadLinks data={data} realName={realName} />}
+			{data.length >= 1 && <DownloadLinks data={data} realName={realName} />}
 		</div>
 	);
 }
